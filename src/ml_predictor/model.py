@@ -12,43 +12,31 @@ class MLPredictor:
         self.scaler = StandardScaler()
 
     def preprocess_data(self, data):
-        """Preprocess the input data."""
-        # Handle missing values
-        data = data.dropna()
-        
-        # Assuming all columns except the last one are features
-        X = data.iloc[:, :-1]
-        y = data.iloc[:, -1]
-        
-        # Scale features
-        X_scaled = self.scaler.fit_transform(X)
-        
-        return X_scaled, y
+        # TODO: Implement data preprocessing
+        # Hint: Handle missing values, scale features
+        pass
 
     def train(self, X, y):
-        """Train the model on the given data."""
-        self.model.fit(X, y)
+        # TODO: Implement model training
+        pass
 
     def predict(self, X):
-        """Make predictions using the trained model."""
-        X_scaled = self.scaler.transform(X)
-        return self.model.predict(X_scaled)
+        # TODO: Implement prediction
+        pass
 
     def evaluate(self, X, y):
-        """Evaluate the model performance."""
-        predictions = self.predict(X)
-        mse = mean_squared_error(y, predictions)
-        r2 = r2_score(y, predictions)
-        return mse, r2
+        # TODO: Implement model evaluation
+        # Hint: Use mean_squared_error and r2_score
+        pass
 
     def save_model(self, filename):
-        """Save the trained model to a file."""
-        joblib.dump((self.model, self.scaler), filename)
+        # TODO: Implement model saving
+        pass
 
     def load_model(self, filename):
-        """Load a trained model from a file."""
-        self.model, self.scaler = joblib.load(filename)
+        # TODO: Implement model loading
+        pass
 
 def load_data(filename):
-    """Load data from a CSV file."""
-    return pd.read_csv(filename)
+    # TODO: Implement data loading
+    pass
