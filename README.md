@@ -1,4 +1,4 @@
-# ML Predictor Package Development Assignment
+# Your own Python Package Development
 
 ## 📚 Introduction
 
