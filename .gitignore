@@ -1,0 +1,14 @@
+**/__pycache__/
+.pytest_cache/
+*.pyc
+.coverage
+*.egg-info/
+
+# VS Code
+.vscode/
+
+# Debugging files
+*.log
+
+# OS generated files
+.DS_Store
