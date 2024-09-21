@@ -1,77 +1,150 @@
-# Debugging in VS Code Assignment
+# ML Predictor Package Development Assignment
 
 ## 📚 Introduction
 
-This assignment is designed to help you practice various debugging techniques in Visual Studio Code (VS Code). You'll implement and debug three functions using different methods, including print statements and output logging.
+This assignment is designed to guide you through the process of developing a complete Python package for machine learning prediction. You will create a package named `ml_predictor`, implement its core functionality, write tests, set up the package structure, and finally publish it to PyPI.
 
 ## 🎯 Objectives
 
-By the end of this assignment, you should be able to:
+By completing this assignment, you will:
 
-1. Use print statements for basic debugging
-2. Implement and debug a sorting algorithm
-3. Use print statements to inspect variables during code execution
-4. Apply different debugging techniques to solve programming problems
+1. Understand the structure of a Python package
+2. Implement a basic machine learning predictor
+3. Write and run unit tests
+4. Create a command-line interface (CLI) for your package
+5. Prepare your package for distribution
+6. Publish your package to PyPI
 
-## 🛠️ Setup
+## 🛠️ Project Structure
 
-1. Ensure you have Python installed in your environment.
-2. Install pytest by running `pip install pytest` in your terminal.
-3. Open the `debugging.py` file in VS Code.
+```
+ml_predictor/
+│
+├── src/
+│   └── ml_predictor/
+│       ├── __init__.py
+│       ├── model.py
+│       └── cli.py
+│
+├── tests/
+│   ├── test_model.py
+│   └── test_cli.py
+│
+├── setup.py
+├── README.md
+├── LICENSE
+└── MANIFEST.in
+```
 
-## 📝 Instructions
+## 📝 Assignment Steps
 
-### Step 1: Implement the functions
+### Step 1: Set Up the Project
 
-Open `debugging.py` and implement the following functions:
+1. Use PyScaffold to create the initial project structure:
+   ```
+   pip install pyscaffold
+   putup ml_predictor
+   cd ml_predictor
+   ```
 
-1. `find_max(numbers)`: Find and return the maximum number in the list. Use print statements to debug your implementation.
-2. `sort_list(numbers)`: Sort the list in ascending order. Use print statements to output the number of comparisons and swaps.
-3. `calculate_average(numbers)`: Calculate and return the average of the numbers. Use print statements to debug your implementation.
+2. Familiarize yourself with the created directory structure.
 
-### Step 2: Run the main program
+### Step 2: Implement the Core Functionality
 
-After implementing the functions, run the main program to test your implementation:
+1. Open `src/ml_predictor/model.py`.
+2. Implement the `MLPredictor` class with methods for data preprocessing, model training, prediction, and evaluation.
+3. Implement the `load_data` function to read data from a CSV file.
 
-1. Open a terminal in VS Code.
-2. Run the command: `python debugging.py`
-3. Observe the output and ensure it looks correct.
 
-### Step 3: Run the tests
+### Step 3: Write Unit Tests
 
-To verify your implementation, run the provided tests:
+1. Open `tests/test_model.py`.
+2. Write unit tests for each method in the `MLPredictor` class.
+3. Run the tests using pytest:
+   ```
+   pytest tests/test_model.py
+   ```
 
-1. In the terminal, run the command: `pytest debugging_test.py`
-2. If any tests fail, read the error messages carefully.
-3. Go back to `debugging.py`, revise your code, and try again.
-4. Repeat steps 2 and 3 until all tests pass.
+### Troubleshooting
 
-## 🧪 Testing
+If you encounter issues with model evaluation, particularly if you get negative R² scores, consider the following debugging steps:
 
-The `debugging_test.py` file contains tests for each function. These tests check both the correctness of your implementation and the use of appropriate debugging techniques (print statements).
+1. Review the `evaluate` method in your `MLPredictor` class. Ensure you're calculating MSE and R² scores correctly.
 
-## 📈 Completion Criteria
+2. Add print statements in the `evaluate` method to output predictions and actual values. This can help understand why R² might be negative.
 
-You've completed the assignment when:
+3. Remember that a negative R² usually means the model performs worse than simply predicting the mean. This might indicate that your model isn't fitting the data correctly.
 
-1. All functions in `debugging.py` are correctly implemented.
-2. You've used print statements for debugging in `find_max` and `calculate_average`.
-3. You've used print statements to log comparisons and swaps in `sort_list`.
-4. All tests in `debugging_test.py` pass when you run `pytest debugging_test.py`.
+4. Double-check your data preprocessing steps. Make sure you're handling features and target variables correctly and applying appropriate scaling.
 
-## 💡 Tips
+5. Consider using cross-validation for model evaluation instead of evaluating only on the training data. This can provide a more reliable performance estimate.
 
-- Don't rush! Take your time to understand each function's requirements.
-- Use meaningful print statements that help you understand what's happening in your code.
-- If you're stuck, try adding more print statements to see the state of your variables at different points in the code.
-- Remember, debugging is a crucial skill in programming. The more you practice, the better you'll become.
+6. If the issue persists, try testing your model with a simpler dataset to see if you can get expected results.
+
+Remember, debugging machine learning models is an iterative process. Keep trying different approaches until you resolve the issue. This process will help you better understand the importance of model evaluation and debugging in machine learning projects.
+
+
+### Step 4: Implement the CLI
+
+1. Open `src/ml_predictor/cli.py`.
+2. Implement the command-line interface for training and prediction.
+3. Test the CLI manually with sample data.
+
+### Step 5: Write CLI Tests
+
+1. Open `tests/test_cli.py`.
+2. Write tests for the CLI functionality.
+3. Run the CLI tests:
+   ```
+   pytest tests/test_cli.py
+   ```
+
+### Step 6: Prepare for Distribution
+
+1. Update `setup.py` with your package information.
+2. Create a `README.md` file with usage instructions.
+3. Choose a license and create a `LICENSE` file.
+4. Create a `MANIFEST.in` file if you have additional non-Python files to include.
+
+### Step 7: Build and Publish
+
+1. Build your package:
+   ```
+   python setup.py sdist bdist_wheel
+   ```
+2. Install twine:
+   ```
+   pip install twine
+   ```
+3. Upload your package to PyPI:
+   ```
+   twine upload dist/*
+   ```
+
+### Step 8: Verify Installation
+
+1. Install your package from PyPI:
+   ```
+   pip install ml_predictor
+   ```
+2. Test the installed package to ensure it works correctly.
+
+## 📊 Grading
+
+Your assignment will be graded based on:
+
+- Correct implementation of the `MLPredictor` class (30%)
+- Passing unit tests for the model (20%)
+- Correct implementation of the CLI (20%)
+- Passing CLI tests (10%)
+- Successful publication to PyPI (10%)
+- Code quality and documentation (10%)
 
 ## 🆘 Getting Help
 
 If you encounter any issues or have questions:
+1. Review this README and the TODO comments in the code files.
+2. Check the PyScaffold and PyPI documentation.
+3. Reach out to your instructor or teaching assistant for clarification.
 
-1. Review this README file and the comments in `debugging.py` carefully.
-2. Check the Python documentation for any functions or methods you're unsure about.
-3. If you're still stuck, reach out to your instructor or teaching assistant for help.
-
-Good luck, and happy debugging! 🐛🔍
+Good luck with your project! 🚀
