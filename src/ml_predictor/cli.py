@@ -1,5 +1,4 @@
 import argparse
-import pandas as pd
 from ml_predictor.model import MLPredictor, load_data
 
 def main():
@@ -12,33 +11,11 @@ def main():
     predictor = MLPredictor()
 
     if args.action == 'train':
-        # TODO: Load data
-        data = # Use the load_data function to load the data
-
-        # TODO: Preprocess data
-        X, y = # Use predictor.preprocess_data to preprocess the data
-
-        # TODO: Train the model
-        # Use predictor.train to train the model
-
-        # TODO: Save the model
-        # Use predictor.save_model to save the model
-
-        print(f"Model trained and saved to {args.model}")
+        # TODO: Implement training workflow
+        pass
     elif args.action == 'predict':
-        # TODO: Load the model
-        # Use predictor.load_model to load the model
-
-        # TODO: Load data
-        data = # Use the load_data function to load the data
-
-        # TODO: Preprocess data
-        X, _ = # Use predictor.preprocess_data to preprocess the data
-
-        # TODO: Make predictions
-        predictions = # Use predictor.predict to make predictions
-
-        print("Predictions:", predictions)
+        # TODO: Implement prediction workflow
+        pass
 
 if __name__ == '__main__':
     main()
